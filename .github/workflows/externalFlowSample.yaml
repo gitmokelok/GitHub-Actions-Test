@@ -1,0 +1,16 @@
+name: branch_checkout
+on: [push]
+
+jobs:
+  external-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout external repository
+        uses: actions/checkout@v3
+        with:
+          repository: abystoma/external-workflow  # Specify the external repository
+          ref: branch  # Specify the branch you want to checkout
+
+      - name: Greetings
+        run: echo "$(<greetings.txt)"
